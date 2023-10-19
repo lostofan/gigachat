@@ -11,12 +11,16 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
+  socket.on('login', (data) => {
+    data ? (socket.username = data) : (socket.username = 'Аноним');
+
+    io.emit('connected', socket.username);
   });
-  socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);
+  socket.on('disconnect', () => {
+    io.emit('leave', socket.username);
+  });
+  socket.on('chat message', (data) => {
+    io.emit('chat message', { message: data, user: socket.username });
   });
 });
 
