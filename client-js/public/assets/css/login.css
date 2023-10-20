@@ -1,0 +1,56 @@
+body, main {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../assets/img/bg.jpg');
+    overflow: hidden;
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    width: 30%;
+    height: 40%;
+    border-radius: 50px;
+}
+.login__heading {
+    all: unset;
+    font-size: 42px;
+    font-weight: 800;
+    text-align: center;
+}
+.login__roll {
+    cursor: pointer;
+}
+.login__roll:hover path{
+    fill: red;
+}
+.login__roll>svg>path {
+    fill: black;
+}
+.login__roll>svg>path:hover {
+    
+}
+.login__button {
+    all: unset;
+    background-color:aquamarine;
+    padding: 16px 20px;
+    font-size: 36px;
+    margin-bottom: 24px;
+}
+.login__button:hover {
+    cursor: pointer;
+    color: aquamarine;
+    background-color:black;
+
+}
+.login__link {
+    all: unset;
+}

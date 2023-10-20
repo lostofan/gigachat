@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GigaChat</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+</head>
+<body>
+    <main class="main">
+        <section class="users">
+            <nav class="users__nav">
+                <span class="users__article">
+                    Пользователи онлайн:
+                </span>
+            </nav>
+            <ul id="user" class="users__list">
+            </ul>
+        </section>
+        <section class="chat">
+            <div class="chat__header">
+
+            </div>
+            <div id="chatWindow" class="chat__main">
+                <ul id="messages" class="chat__messages"></ul>
+            </div>
+
+            <form id="form" action="" class="chat__control control">
+                <div class="control__avatar avatar"></div>
+                <input id="input" class="control__input" autocomplete="off"
+                    placeholder="Написать сообщение..." /><button class="control__send">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.815 10.197L3.28299 11.453C3.19639 11.4675 3.11513 11.5045 3.04737 11.5603C2.97961 11.6161 2.92775 11.6888 2.89699 11.771L0.299988 18.728C0.0519883 19.368 0.720988 19.978 1.33499 19.671L19.335 10.671C19.4597 10.6088 19.5645 10.513 19.6378 10.3945C19.7111 10.276 19.7499 10.1394 19.7499 10C19.7499 9.86066 19.7111 9.72406 19.6378 9.60554C19.5645 9.48702 19.4597 9.39126 19.335 9.32901L1.33499 0.329007C0.720988 0.0220075 0.0519883 0.633008 0.299988 1.27201L2.89799 8.22901C2.9286 8.31142 2.98041 8.38431 3.04818 8.44031C3.11594 8.49632 3.19728 8.53347 3.28399 8.54801L10.816 9.80301C10.8623 9.81113 10.9043 9.83533 10.9346 9.87136C10.9649 9.9074 10.9815 9.95295 10.9815 10C10.9815 10.0471 10.9649 10.0926 10.9346 10.1287C10.9043 10.1647 10.8623 10.1889 10.816 10.197H10.815Z" />
+                    </svg>
+
+                </button>
+            </form>
+
+        </section>
+    </main>
+    <script>
+        console.log(socket.username);
+        const messages = document.getElementById('messages');
+        const form = document.getElementById('form');
+        const input = document.getElementById('input');
+        const user = document.getElementById('user');
+        const chatWindow = document.getElementById('chatWindow')
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (input.value) {
+                socket.emit('chat message', input.value);
+                input.value = '';
+            }
+        });
+        socket.on('update online', (data) => {
+            user.innerHTML = "";
+            data.map((elem) => {
+                let item = document.createElement('li');
+                let avatar = document.createElement('div');
+                let username = document.createElement('span');
+                item.className = "users__user user";
+                avatar.className = "user__avatar avatar";
+                username.className = "user__name";
+                username.textContent = elem;
+                item.appendChild(avatar);
+                item.appendChild(username);
+                user.appendChild(item);
+            })
+
+
+
+        })
+        socket.on('chat message', (data) => {
+            messages.innerHTML = "";
+            data.messages.map((elem) => {
+                let item = document.createElement('li');
+                let avatar = document.createElement('div');
+                let message = document.createElement('p');
+                let username = document.createElement('span');
+                avatar.className = "chat__avatar avatar";
+                if (nickname === elem.user) {
+                    item.classList.add('chat__message_my');
+                }
+                item.classList.add("chat__message");
+                username.classList.add("chat__username");
+                username.innerHTML = elem.user + ": ";
+                message.innerHTML = elem.message;
+                item.appendChild(avatar);
+                item.appendChild(username);
+                item.appendChild(message);
+                messages.appendChild(item);
+                chatWindow.scrollTo(0, chatWindow.scrollHeight);
+            });
+
+        });
+        socket.on('leave', (data) => {
+            let item = document.createElement('li');
+            item.textContent = data + " вышел из чата";
+            item.className = "chat__message_disconnect";
+            messages.appendChild(item);
+            chatWindow.scrollTo(0, chatWindow.scrollHeight);
+        })
+        socket.on('connected', (data) => {
+            let item = document.createElement('li');
+            item.textContent = data + " подключился";
+            item.className = "chat__message_connect";
+            messages.appendChild(item);
+            chatWindow.scrollTo(0, chatWindow.scrollHeight);
+        })
+    </script>
+</body>
+
+</html>
