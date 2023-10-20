@@ -1,0 +1,120 @@
+body {
+    width: 100vw;
+}
+.main {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+}
+.users {
+    flex-basis: 20%;
+    text-align: center;
+}
+.users__nav {
+    margin-bottom: 12px;
+}
+.users__article {
+    font-weight: 800;
+    font-size: 24px; 
+}
+.users__list {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px;
+}
+.user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.chat {
+    flex-basis: 80%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../../assets/img/bg.jpg');
+}
+.chat__main {
+    padding: 42px 111px;
+    height: 100%;
+    overflow-y: scroll;
+}
+.chat__message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 12px 12px 12px 0;
+    padding: 4px 12px;
+    width: 400px;
+    min-height: 40px;
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+.chat__message_my {
+    background-color: lightgreen;
+    margin-left: auto;
+    border-radius: 12px 12px 0 12px;
+}
+.chat__username {
+    display: block;
+    color: blue;
+    font-weight: 800;
+    margin-right: 5px;
+}
+.chat__message_disconnect, .chat__message_connect {
+    font-weight: 800;
+    font-size: 24px;
+    text-shadow: 2px 2px 2px black;
+}
+.chat__message_disconnect {
+    color:deeppink;
+}
+.chat__message_connect {
+    color:chartreuse;
+}
+.chat__control {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 12px;
+    width: 70%;
+    margin: 0 auto;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+.control__input {
+    all: unset;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 16px;
+}
+.control__avatar {
+    width: 30px;
+    height: 30px;
+    background-color: red;
+}
+.control__send {
+    all: unset;
+    cursor: pointer;
+}
+
+.control__send>svg {
+    fill: #8BABD8;
+}
+.control__send>svg:hover {
+    fill: red;
+}
+.avatar {
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 30px;
+    margin-right: 10px;
+}
