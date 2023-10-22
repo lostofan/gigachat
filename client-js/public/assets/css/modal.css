@@ -1,0 +1,50 @@
+.modal {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.modal__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    width: 400px;
+    padding: 40px;
+}
+.modal__control {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.modal__avatar {
+    width: 30px;
+    height: 30px;
+}
+.modal__nickname {
+    font-size: 24px;
+    font-weight: 800;
+}
+.modal__dice {
+    width: 30px;
+    height: 30px;
+}
+.modal__dice:hover {
+cursor: pointer;
+}
+
+.modal__button {
+    background-color: blueviolet;
+    color: white;
+    padding: 15px;    
+}
+.modal__button:hover {
+    cursor: pointer;
+}

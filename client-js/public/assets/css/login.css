@@ -14,7 +14,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     background-color: #fff;
     width: 30%;
     height: 40%;
@@ -26,18 +26,7 @@ main {
     font-weight: 800;
     text-align: center;
 }
-.login__roll {
-    cursor: pointer;
-}
-.login__roll:hover path{
-    fill: red;
-}
-.login__roll>svg>path {
-    fill: black;
-}
-.login__roll>svg>path:hover {
-    
-}
+
 .login__button {
     all: unset;
     background-color:aquamarine;
@@ -46,7 +35,6 @@ main {
     margin-bottom: 24px;
 }
 .login__button:hover {
-    cursor: pointer;
     color: aquamarine;
     background-color:black;
 

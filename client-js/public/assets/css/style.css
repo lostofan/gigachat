@@ -1,5 +1,6 @@
 body {
     width: 100vw;
+    position: relative;
 }
 .main {
     display: flex;
@@ -49,7 +50,7 @@ body {
     background-color: #fff;
     border-radius: 12px 12px 12px 0;
     padding: 4px 12px;
-    width: 400px;
+    width: 450px;
     min-height: 40px;
     margin-bottom: 16px;
     font-size: 18px;
@@ -59,22 +60,14 @@ body {
     margin-left: auto;
     border-radius: 12px 12px 0 12px;
 }
+.chat__attachment {
+    max-width: 250px;
+}
 .chat__username {
     display: block;
     color: blue;
     font-weight: 800;
     margin-right: 5px;
-}
-.chat__message_disconnect, .chat__message_connect {
-    font-weight: 800;
-    font-size: 24px;
-    text-shadow: 2px 2px 2px black;
-}
-.chat__message_disconnect {
-    color:deeppink;
-}
-.chat__message_connect {
-    color:chartreuse;
 }
 .chat__control {
     display: flex;
@@ -95,11 +88,17 @@ body {
     border-radius: 12px;
     padding: 16px;
 }
-.control__avatar {
-    width: 30px;
-    height: 30px;
-    background-color: red;
-}
+.attach__input {
+    display: none;
+ }
+ .attach__ico {
+     width: 30px;
+     height: 30px;
+ }
+ .attach__ico:hover {
+     fill: red;
+     cursor: pointer;
+ }
 .control__send {
     all: unset;
     cursor: pointer;
@@ -117,4 +116,41 @@ body {
     background-color: red;
     border-radius: 30px;
     margin-right: 10px;
+}
+.popups {
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+    z-index: 10;
+}
+.popup {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 25px;
+    background-color: #fff;
+    margin-bottom: 15px;
+box-shadow: 0px 12px 0px 0px rgba(0, 0, 0, 0.3);
+}
+.popup__close {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+}
+.popup__close::after {
+    content: "\274C";
+    color: red;
+    font-size: 20px;
+}
+.popup__message {
+    font-weight: 800;
+    font-size: 18px;
+}
+.popup__message_connect {
+    color:forestgreen;
+}
+.popup__message_disconnect {
+    color:deeppink;
 }
