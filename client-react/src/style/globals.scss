@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,800;1,300&display=swap');
+body {
+  position: relative;
+}
+button,
+a,
+h1,
+p,
+button {
+  all: unset;
+  user-select: none;
+}
+input {
+  all: unset;
+}
+button:hover,
+a:hover {
+  cursor: pointer;
+}
+
+*,
+span {
+  font-family: 'Exo 2', sans-serif;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+}

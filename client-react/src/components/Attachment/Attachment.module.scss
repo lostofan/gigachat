@@ -1,0 +1,14 @@
+.root {
+  .input {
+    display: none;
+  }
+  .ico {
+    width: 30px;
+    height: 30px;
+    fill: #8babd8;
+    &:hover {
+      cursor: pointer;
+      fill: red;
+    }
+  }
+}
