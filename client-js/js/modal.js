@@ -1,4 +1,4 @@
-import { socket } from './chat.js';
+import { socket } from './socketClient.js';
 
 export let login;
 async function createModal() {
@@ -25,7 +25,7 @@ async function createModal() {
 
   const modalDice = document.createElement('img');
   modalDice.className = 'modal__dice';
-  modalDice.src = '/assets/img/dice.svg';
+  modalDice.src = '../img/dice.svg';
   modalDice.title = 'Сгенерировать имя';
 
   const modalButton = document.createElement('button');

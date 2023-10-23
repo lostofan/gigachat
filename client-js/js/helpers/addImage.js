@@ -1,4 +1,4 @@
-import { socket } from '../chat.js';
+import { socket } from '../socketClient.js';
 
 const toBase64 = () => {
   const input = document.querySelector('.attach__input');
