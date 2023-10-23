@@ -1,14 +1,19 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
-const path = require('path');
 const { Server } = require('socket.io');
-const io = new Server(server, { maxHttpBufferSize: 1e7 });
+const io = new Server(server, {
+  maxHttpBufferSize: 1e7,
+  cors: {
+    origin: `${process.env.CLIENT}`,
+    methods: ['GET', 'POST'],
+  },
+});
 
 let usersOnline = [];
 const messages = [];
-
 const cleanMessagesHistory = () => {
   if (messages.length > 30) {
     messages.splice(0, 1);
@@ -18,10 +23,6 @@ const getAvatar = (login) => {
   let src = `https://api.multiavatar.com/${login}.png?apikey=xC6uEZzUY4r1nJ`;
   return src;
 };
-app.use(express.static(path.join(__dirname, '../client-js', 'public')));
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client-js', 'index.html'));
-});
 io.on('connection', (socket) => {
   socket.on('login', (data) => {
     socket.username = data;
@@ -63,6 +64,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(3000, () => {
+server.listen(process.env.PORT || 3000, () => {
   console.log('listening on *:3000');
 });
