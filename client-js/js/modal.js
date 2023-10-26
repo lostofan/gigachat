@@ -1,5 +1,5 @@
-import { getAvatar } from '../../client-react/src/helpers/getAvatar.js';
 import { socket } from './socketClient.js';
+import { getAvatar } from './helpers/getAvatar.js';
 
 export let login;
 export let avatar;
