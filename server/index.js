@@ -19,51 +19,35 @@ const cleanMessagesHistory = () => {
     messages.splice(0, 1);
   }
 };
-const getAvatar = (login) => {
-  let src = `https://api.multiavatar.com/${login}.png?apikey=xC6uEZzUY4r1nJ`;
-  return src;
-};
 io.on('connection', (socket) => {
   socket.on('login', (data) => {
-    socket.username = data;
-    io.emit('connected', socket.username);
-    usersOnline.push({ user: socket.username, avatar: getAvatar(socket.username) });
+    socket.username = data.name;
+    io.emit('connected', data.name);
+    usersOnline.push({ id: data?.id, name: data.name, avatar: data.avatar });
     //load users
     io.emit('update online', usersOnline);
     //load messages
-    io.emit('chat message', {
-      user: socket.username,
-      avatar: getAvatar(socket.username),
-      messages,
-    });
+    io.emit('update messages', messages);
   });
   socket.on('disconnect', () => {
     io.emit('leave', socket.username);
-    usersOnline = usersOnline.filter((user) => user.user !== socket.username);
+    usersOnline = usersOnline.filter((user) => user.name !== socket.username);
     io.emit('update online', usersOnline);
   });
   socket.on('chat message', (data) => {
     messages.push({
-      message: data,
-      user: socket.username,
-      avatar: getAvatar(socket.username),
-      type: 'text',
+      id: data?.id,
+      message: data.message,
+      user: data.user,
+      avatar: data.avatar,
+      image: data.image,
+      type: data.image ? 'image' : 'text',
     });
     cleanMessagesHistory();
-    io.emit('chat message', { message: data, user: socket.username, messages });
-  });
-  socket.on('get image', (data) => {
-    messages.push({
-      image: data,
-      user: socket.username,
-      avatar: getAvatar(socket.username),
-      type: 'image',
-    });
-    cleanMessagesHistory();
-    io.emit('chat message', { image: data, user: socket.username, messages });
+    io.emit('update messages', messages);
   });
 });
 
 server.listen(process.env.PORT || 3000, () => {
-  console.log('listening on *:3000');
+  console.log('listening on', process.env.PORT);
 });

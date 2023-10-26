@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import style from './ChatControl.module.scss';
 import { Attachment } from '../Attachment/Attachment';
+import { useCreateMessage } from '../../hooks/useCreateMessage';
 
-export const ChatControl = ({ socket }) => {
-  const [input, setInput] = useState('');
-  const submitMessage = (e) => {
-    e.preventDefault();
-    if (input) {
-      socket.emit('chat message', input);
-      setInput('');
-    }
-  };
+export const ChatControl = () => {
+  const formRef = useRef(null);
+  const { input, setInput } = useCreateMessage(formRef);
   return (
-    <form id="form" action="" className={style.root} onSubmit={(e) => submitMessage(e)}>
+    <form id="form" className={style.root} ref={formRef}>
       <Attachment />
       <input
         value={input}

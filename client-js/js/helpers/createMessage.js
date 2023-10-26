@@ -5,7 +5,7 @@ const chatWindow = document.getElementById('chatWindow');
 
 export const createMessage = async (data) => {
   messages.innerHTML = '';
-  data.messages.map(async (elem) => {
+  data.map(async (elem) => {
     let item = document.createElement('li');
     let avatar = document.createElement('img');
     let username = document.createElement('span');

@@ -9,7 +9,7 @@ export const updateOnline = (data) => {
     avatar.className = 'user__avatar avatar';
     avatar.src = elem.avatar;
     username.className = 'user__name';
-    username.textContent = elem.user;
+    username.textContent = elem.name;
     item.appendChild(avatar);
     item.appendChild(username);
     user.appendChild(item);

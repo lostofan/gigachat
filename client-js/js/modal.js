@@ -1,6 +1,8 @@
+import { getAvatar } from '../../client-react/src/helpers/getAvatar.js';
 import { socket } from './socketClient.js';
 
 export let login;
+export let avatar;
 async function createModal() {
   const body = document.body;
 
@@ -45,7 +47,8 @@ async function createModal() {
 }
 function closeModal() {
   login = document.querySelector('.modal__nickname').innerHTML;
-  socket.emit('login', login);
+  avatar = getAvatar(login);
+  socket.emit('login', { name: login, avatar: avatar });
   document.querySelector('.modal').remove();
 }
 createModal();

@@ -1,3 +1,4 @@
+import { avatar, login } from '../modal.js';
 import { socket } from '../socketClient.js';
 
 const toBase64 = () => {
@@ -10,7 +11,12 @@ const toBase64 = () => {
     reader.readAsDataURL(file);
     reader.onload = () => {
       const base64String = reader.result;
-      socket.emit('get image', base64String);
+      socket.emit('chat message', {
+        user: login,
+        avatar: avatar,
+        message: '',
+        image: base64String,
+      });
     };
     this.value = '';
   });

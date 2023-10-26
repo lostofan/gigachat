@@ -9,24 +9,5 @@
     padding: 42px 111px;
     height: 100%;
     overflow-y: scroll;
-    .message {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      background-color: #fff;
-      border-radius: 12px 12px 12px 0;
-      padding: 4px 12px;
-      width: 450px;
-      min-height: 40px;
-      margin-bottom: 16px;
-      font-size: 18px;
-      .avatar {
-        width: 30px;
-        height: 30px;
-        background-color: red;
-        border-radius: 30px;
-        margin-right: 10px;
-      }
-    }
   }
 }

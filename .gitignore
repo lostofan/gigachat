@@ -1,5 +1,4 @@
 
 /node_modules
 /client-js/node_modules
-/
 *.env
