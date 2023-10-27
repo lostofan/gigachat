@@ -12,9 +12,12 @@ export const useCreateMessage = (ref) => {
   useEffect(() => {
     const form = ref.current;
     const onSubmit = (e) => {
+      e.preventDefault();
+      if (!e.target[1].value) {
+        return;
+      }
       if (user.name) {
         const message = e.target[1].value;
-        e.preventDefault();
         dispatch(
           addMessage({
             id: v4(),
