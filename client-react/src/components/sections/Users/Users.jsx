@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import style from './Users.module.scss';
 import { User } from '../../User/User';
 import { useUsers } from '../../../hooks/useUsers';
+import { BurgerContext } from '../../../pages/Chat/ChatPage';
 
 export const Users = () => {
   const users = useUsers();
+  const { menuActive } = useContext(BurgerContext);
   return (
-    <section className={style.root}>
+    <section className={menuActive ? style.root : style.hidden}>
       <nav className={style.nav}>
         <span className={style.article}>Пользователи онлайн:</span>
       </nav>

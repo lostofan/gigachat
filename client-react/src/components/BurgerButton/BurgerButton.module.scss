@@ -1,0 +1,56 @@
+.root {
+  display: none;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+  z-index: 11;
+  cursor: pointer;
+  @media (max-width: 700px) {
+    display: block;
+  }
+}
+
+.root span {
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: #fff;
+  border-radius: 9px;
+  border: 1px solid black;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.root span:nth-child(1) {
+  top: 0px;
+}
+
+.root span:nth-child(2) {
+  top: 10px;
+}
+
+.root span:nth-child(3) {
+  top: 20px;
+}
+
+.opened span:nth-child(1) {
+  top: 10px;
+  transform: rotate(135deg);
+}
+
+.opened span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.opened span:nth-child(3) {
+  top: 10px;
+  transform: rotate(-135deg);
+}

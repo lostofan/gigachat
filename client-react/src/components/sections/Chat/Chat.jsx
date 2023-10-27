@@ -6,6 +6,7 @@ import { LoginModal } from '../../LoginModal/LoginModal';
 import { Message } from '../../Message/Message';
 import { Popups } from '../../Popups/Popups';
 import { useMessages } from '../../../hooks/useMessages';
+import { BurgerButton } from '../../BurgerButton/BurgerButton';
 
 export const Chat = () => {
   const [showModal, setShowModal] = useState(true);
@@ -22,6 +23,7 @@ export const Chat = () => {
       {createPortal(<Popups />, document.body)}
       <section className={style.wrapper}>
         <div className={style.root} ref={ref}>
+          <BurgerButton />
           <ul className={style.messages}>
             {messages.map((elem) => {
               return (
