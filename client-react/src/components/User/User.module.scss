@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   margin-bottom: 8px;
+  font-size: clamp(0.875rem, 0.8287rem + 0.2469vw, 1.125rem);
   .avatar {
     width: 30px;
     height: 30px;

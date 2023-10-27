@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import style from './Attachment.module.scss';
+import { useImage } from '../../hooks/useImage';
 
-export const Attachment = () => {
+export const Attachment = ({ setLoader }) => {
+  const ref = useRef(null);
+  useImage(ref, setLoader);
   return (
     <label className={style.root}>
-      <input className={style.input} type="file" accept="image/png, image/gif, image/jpeg" />
+      <input
+        className={style.input}
+        type="file"
+        accept="image/png, image/gif, image/jpeg"
+        ref={ref}
+      />
       <svg
         className={style.ico}
         alt="отправить изображение"

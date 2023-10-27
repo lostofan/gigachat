@@ -1,0 +1,32 @@
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  width: 250px;
+  border-radius: 25px;
+  background-color: #fff;
+  margin-bottom: 15px;
+  box-shadow: 0px 12px 0px 0px rgba(0, 0, 0, 0.3);
+  .closeBtn {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    &::after {
+      content: '\274C';
+      color: red;
+      font-size: 20px;
+    }
+  }
+  .message {
+    font-weight: 800;
+    font-size: 18px;
+  }
+}
+.connect {
+  color: forestgreen;
+}
+.disconnect {
+  color: deeppink;
+}

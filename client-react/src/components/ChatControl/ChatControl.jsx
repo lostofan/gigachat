@@ -1,20 +1,22 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import style from './ChatControl.module.scss';
 import { Attachment } from '../Attachment/Attachment';
 import { useCreateMessage } from '../../hooks/useCreateMessage';
 
 export const ChatControl = () => {
   const formRef = useRef(null);
+  const [loader, setLoader] = useState(false);
   const { input, setInput } = useCreateMessage(formRef);
   return (
     <form id="form" className={style.root} ref={formRef}>
-      <Attachment />
+      <Attachment setLoader={setLoader} />
       <input
-        value={input}
+        value={loader ? 'идёт загрузка изображения...' : input}
         onChange={(e) => setInput(e.target.value)}
         className={style.input}
         autoComplete="off"
         placeholder="Написать сообщение..."
+        disabled={loader}
       />
       <button className={style.send}>
         <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">

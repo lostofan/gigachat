@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Users.module.scss';
 import { User } from '../../User/User';
-import useUsers from '../../../hooks/useUsers';
+import { useUsers } from '../../../hooks/useUsers';
 
 export const Users = () => {
   const users = useUsers();

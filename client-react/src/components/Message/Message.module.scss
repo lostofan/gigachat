@@ -8,7 +8,8 @@
   width: 450px;
   min-height: 40px;
   margin-bottom: 16px;
-  font-size: 18px;
+  font-size: clamp(0.75rem, 0.6806rem + 0.3704vw, 1.125rem);
+  overflow: hidden;
   .avatar {
     width: 30px;
     height: 30px;
@@ -16,9 +17,24 @@
     border-radius: 30px;
     margin-right: 10px;
   }
+  .attachment {
+    max-width: 250px;
+    display: inline-block;
+  }
+  .username {
+    font-weight: 800;
+  }
 }
 .myMessage {
   background-color: lightgreen;
   margin-left: auto;
   border-radius: 12px 12px 0 12px;
+}
+@media only screen and (max-width: 700px) {
+  .root {
+    width: 80%;
+    .attachment {
+      max-width: 30%;
+    }
+  }
 }

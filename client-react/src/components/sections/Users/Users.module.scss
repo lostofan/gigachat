@@ -5,12 +5,17 @@
     margin-bottom: 12px;
     .article {
       font-weight: 800;
-      font-size: 24px;
+      font-size: clamp(0.875rem, 0.7593rem + 0.6173vw, 1.5rem);
     }
   }
   .list {
     display: flex;
     flex-direction: column;
     padding: 8px 16px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .root {
+    flex-basis: 10%;
   }
 }

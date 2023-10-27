@@ -1,8 +1,6 @@
-import { io } from 'socket.io-client';
 import { updateUsers } from '../slices/usersSlice';
 import { updateMessages } from '../slices/messagesSlice';
-
-const socket = io('http://localhost:3001');
+import { socket } from '../../helpers/createSocket';
 
 export const socketMiddleware = (store) => (next) => (action) => {
   if (action.type === 'users/addUser') {
