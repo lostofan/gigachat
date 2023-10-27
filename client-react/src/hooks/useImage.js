@@ -11,7 +11,7 @@ export const useImage = (ref, setLoader) => {
     const input = e.target;
     const file = input.files[0];
     if (file.size > 1e7) {
-      alert('Файл должен быть меньше 10МБ');
+      alert('Файл должен быть меньше 10 мб');
       input.value = '';
       return;
     }
@@ -41,5 +41,5 @@ export const useImage = (ref, setLoader) => {
     if (user.name) {
       input.addEventListener('change', onChange);
     }
-  }, [user]);
+  });
 };
