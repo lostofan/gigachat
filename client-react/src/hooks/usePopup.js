@@ -10,9 +10,7 @@ export const usePopup = () => {
   });
   useEffect(() => {
     socket.on('leave', (data) => {
-      console.log(popup);
       setPopup([...popup, { name: data, type: 'disconnect' }]);
-      console.log('disc');
     });
   });
   return { popup, setPopup };
