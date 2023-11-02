@@ -1,13 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import style from './LoginModal.module.scss';
 import dice from '../../assets/img/dice.svg';
 import { rollUser } from '../../helpers/getLogin';
 import { useCreateUser } from '../../hooks/useCreateUser';
 
 export const LoginModal = ({ setShowModal }) => {
-  const buttonRef = useRef(null);
   const [user, setUser] = useState(rollUser());
-  useCreateUser(buttonRef, user, setShowModal);
+  const { createUser } = useCreateUser(user, setShowModal);
 
   return (
     <div className={style.root}>
@@ -24,7 +23,7 @@ export const LoginModal = ({ setShowModal }) => {
             onClick={() => setUser(rollUser())}
           />
         </div>
-        <button className={style.button} ref={buttonRef}>
+        <button className={style.button} onClick={createUser}>
           Принять
         </button>
       </div>

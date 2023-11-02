@@ -5,12 +5,13 @@ import { ChatControl } from '../../ChatControl/ChatControl';
 import { LoginModal } from '../../LoginModal/LoginModal';
 import { Message } from '../../Message/Message';
 import { Popups } from '../../Popups/Popups';
-import { useMessages } from '../../../hooks/useMessages';
 import { BurgerButton } from '../../BurgerButton/BurgerButton';
+import { useSelector } from 'react-redux';
+import { selectMessages } from '../../../redux/slices/messagesSlice';
 
 export const Chat = () => {
   const [showModal, setShowModal] = useState(true);
-  const messages = useMessages();
+  const messages = useSelector(selectMessages);
   const ref = useRef(null);
   useEffect(() => {
     const chatWindow = ref.current;

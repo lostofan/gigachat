@@ -1,17 +1,16 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import style from './Attachment.module.scss';
 import { useImage } from '../../hooks/useImage';
 
 export const Attachment = ({ setLoader }) => {
-  const ref = useRef(null);
-  useImage(ref, setLoader);
+  const { createImage } = useImage(setLoader);
   return (
     <label className={style.root}>
       <input
         className={style.input}
         type="file"
         accept="image/png, image/gif, image/jpeg"
-        ref={ref}
+        onChange={(e) => createImage(e)}
       />
       <svg
         className={style.ico}

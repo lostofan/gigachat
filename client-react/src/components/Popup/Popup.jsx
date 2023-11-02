@@ -8,7 +8,7 @@ export const Popup = ({ name, type, setPopup, popup, idx }) => {
         className={style.closeBtn}
         onClick={() => setPopup(popup.filter((_, index) => index !== idx))}></button>
       <span className={style.message}>
-        {name} {type === 'connect' ? 'подключился' : 'отключился'}
+        {name} {type === 'connect' ? 'подключился' : type === 'disconnect' ? 'отключился' : ''}
       </span>
     </div>
   );

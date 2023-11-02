@@ -1,14 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import style from './ChatControl.module.scss';
 import { Attachment } from '../Attachment/Attachment';
 import { useCreateMessage } from '../../hooks/useCreateMessage';
 
 export const ChatControl = () => {
-  const formRef = useRef(null);
   const [loader, setLoader] = useState(false);
-  const { input, setInput } = useCreateMessage(formRef);
+  const { input, setInput, createUser } = useCreateMessage();
   return (
-    <form id="form" className={style.root} ref={formRef}>
+    <form id="form" className={style.root} onSubmit={(e) => createUser(e)}>
       <Attachment setLoader={setLoader} />
       <input
         value={loader ? 'идёт загрузка изображения...' : input}

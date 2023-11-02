@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import style from './Users.module.scss';
 import { User } from '../../User/User';
-import { useUsers } from '../../../hooks/useUsers';
 import { BurgerContext } from '../../../pages/Chat/ChatPage';
+import { useSelector } from 'react-redux';
+import { selectUsers } from '../../../redux/slices/usersSlice';
 
 export const Users = () => {
-  const users = useUsers();
+  const users = useSelector(selectUsers);
   const { menuActive } = useContext(BurgerContext);
   return (
     <section className={menuActive ? style.root : style.hidden}>
